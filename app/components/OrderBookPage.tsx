@@ -122,6 +122,7 @@ const OrderBookPage = () => {
           </tbody>
         </table>
       </div>
+      <a href='/create'>Create order</a>
     </div>
   )
 }
