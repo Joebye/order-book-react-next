@@ -30,6 +30,7 @@ const OrderBookPage = () => {
 
     fetchOrderBook()
     setLoading(false)
+    
   }, [loading])
 
   if (loading) return <p>Loading...</p>
