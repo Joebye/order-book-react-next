@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import SelectStatus from './SelectStatus'
 
 interface OrderBookEntry {
   id: number
@@ -12,7 +13,8 @@ interface OrderBookEntry {
 const OrderBookPage = () => {
   const [orderBook, setOrderBook] = useState<OrderBookEntry[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [status, setStatus] = useState('all');
 
   useEffect(() => {
     const fetchOrderBook = async () => {
@@ -25,19 +27,31 @@ const OrderBookPage = () => {
         setError('No data found')
       
       }
-      setOrderBook(data)
+  
+      setOrderBook(status == 'all' ? data : data.filter((el:any) => el.status == status))
     }
 
     fetchOrderBook()
     setLoading(false)
+
+  }, [loading,status])
+
+
+  function showStatus(status: string) {
+    setStatus(status);
+    console.log(status);
     
-  }, [loading])
+
+  }
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error}</p>
   return (
     <div className=''>
       <h1 className='text-2xl font-bold mb-4 text-gray-900 dark:text-white'>Order Book</h1>
+      <div>
+        <SelectStatus options={['pending', 'completed', 'cancelled', 'all']} callbackFn={showStatus}/>
+      </div>
       <div className='overflow-x-auto'>
         <table className='min-w-full table-auto'>
           <thead className='border-b bg-gray-700 dark:bg-gray-800'>
