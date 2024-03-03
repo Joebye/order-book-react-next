@@ -23,12 +23,14 @@ const OrderBookPage = () => {
       const data = await response.json()
       if (!data) {
         setError('No data found')
+      
       }
       setOrderBook(data)
     }
 
     fetchOrderBook()
-  })
+    setLoading(false)
+  }, [loading])
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error}</p>
