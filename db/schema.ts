@@ -9,4 +9,7 @@ export const orders = pgTable('orders', {
   quantity: integer('quantity'),
   orderTime: timestamp('order_time').defaultNow(),
   status: statusEnum('status'), // Enum for order status
-})
+  customer: integer ('customer_id').default(123)
+
+}
+)

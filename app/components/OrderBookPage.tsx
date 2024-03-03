@@ -8,6 +8,8 @@ interface OrderBookEntry {
   quantity: number
   orderTime: string
   status: 'pending' | 'completed' | 'cancelled'
+  customer: number
+  
 }
 
 const OrderBookPage = () => {
@@ -80,6 +82,12 @@ const OrderBookPage = () => {
               >
                 Status
               </th>
+               <th
+                scope='col'
+                className='text-sm font-medium text-gray-100 px-6 py-4 text-left'
+              >
+                Customer Id
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -105,6 +113,9 @@ const OrderBookPage = () => {
                   }`}
                 >
                   {entry.status}
+                </td>
+                <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white'>
+                  {entry.customer}
                 </td>
               </tr>
             ))}

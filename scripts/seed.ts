@@ -9,7 +9,7 @@ interface Order {
 
 const seedDatabase = async () => {
   const sampleOrders: Order[] = [
-    { productId: 1, quantity: 100, status: 'pending' },
+    { productId: 1, quantity: 100, status: 'pending',  },
     { productId: 2, quantity: 200, status: 'completed' },
     { productId: 3, quantity: 150, status: 'cancelled' },
     { productId: 4, quantity: 50, status: 'pending' },
