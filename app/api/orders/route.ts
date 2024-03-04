@@ -14,13 +14,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-
   const data = await request.json();
   await db.insert(schema.orders).values(data)
-  console.log(data);
-  
-  
-  return new NextResponse('',{
+  return new NextResponse('', {
     status: 200,
     headers: {
       'Content-Type': 'application/json',

@@ -2,8 +2,8 @@
 import { FormEventHandler, useState } from "react"
 import SelectStatus from "./SelectStatus"
 
-type Status = 'pending'|'completed'|'cancelled'
-
+type Status = 'pending'|'completed'|'cancelled';
+export const statusOptions: Status[] = ['pending', 'completed', 'cancelled']
 
 const FormCreateOrder = () => {
 
@@ -35,17 +35,20 @@ const setStatusFn = (status:String) => {
 
 
 return (<div>
-    <p>Create Order</p>
+    <p>Create Order</p><br/>
     <form style={{color:'black'}} onSubmit={onSubmitFn}>
-    <input required type = "number" name='productId'></input>
-    <input required type = "number" name='quantity'></input>
-    <input  required type = "number" name='customer'></input>
-     <SelectStatus options={['pending', 'completed', 'cancelled']} callbackFn={setStatusFn} />
+    <label style={{color:'white'}} htmlFor='productId'>Product Id: </label>
+    <input required type = "number" name='productId'></input><br/> <br/>
+    <label style={{color:'white'}} htmlFor='quantity'>Quantity: </label>
+    <input required type = "number" name='quantity'></input><br/> <br/>
+    <label style={{color:'white'}} htmlFor='customer'>Customer Id: </label>
+    <input  required type = "number" name='customer'></input><br/> <br/>
+     <SelectStatus options={statusOptions} callbackFn={setStatusFn} /><br/>
     <button style={{color:'white'}} type="submit">Submit</button>
     </form>
-   
     </div>
 )
+
 }
 
 export default FormCreateOrder

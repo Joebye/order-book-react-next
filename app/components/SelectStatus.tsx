@@ -6,7 +6,7 @@ type Props = {
 
 const SelectStatus: React.FC<Props> = (props) => {
 
-return <div> 
+return <div style={{color:'white'}}> 
     <label>Select status: </label>
 <select onChange={(event) => {
     props.callbackFn(event.target.value)

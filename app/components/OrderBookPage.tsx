@@ -9,7 +9,6 @@ interface OrderBookEntry {
   orderTime: string
   status: 'pending' | 'completed' | 'cancelled'
   customer: number
-  
 }
 
 const OrderBookPage = () => {
@@ -36,15 +35,12 @@ const OrderBookPage = () => {
     fetchOrderBook()
     setLoading(false)
 
-  }, [loading,status])
+  }, [loading, status])
 
 
   function showStatus(status: string) {
     setStatus(status);
-    console.log(status);
-    
-
-  }
+   }
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error}</p>
